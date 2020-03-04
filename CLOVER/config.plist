@@ -12,96 +12,26 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
-				<key>FixShutdown</key>
+				<key>AddDTGP</key>
+				<true/>
+				<key>AddPNLF</key>
 				<false/>
+				<key>FixDisplay</key>
+				<true/>
+				<key>FixRTC</key>
+				<true/>
 			</dict>
-			<key>Name</key>
-			<string>DSDT.aml</string>
 			<key>Patches</key>
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>Rename HDAS to HDEF</string>
+					<string>change HDAS to HDEF</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
+					<data>SERBUw==</data>
 					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change EC0 to EC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					RUMwXw==
-					</data>
-					<key>Replace</key>
-					<data>
-					RUNfXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change XHCI to XHC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					WEhDSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WEhDXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change XHC1 to XHC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					WEhDMQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WEhDXw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change HECI to IMEI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SEVDSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change GFX0 to IGPU</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
-					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
+					<data>SERFRg==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -109,13 +39,19 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					UEVHUA==
-					</data>
+					<data>UEVHUA==</data>
 					<key>Replace</key>
-					<data>
-					R0ZYMA==
-					</data>
+					<data>R0ZYMA==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change EC0 to EC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>RUMwXw==</data>
+					<key>Replace</key>
+					<data>RUNfXw==</data>
 				</dict>
 			</array>
 			<key>ReuseFFFF</key>
@@ -125,9 +61,7 @@
 		<array>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>CpuPm</string>
+				<string>BGRT</string>
 			</dict>
 			<dict>
 				<key>Signature</key>
@@ -135,13 +69,9 @@
 			</dict>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>Cpu0Ist</string>
+				<string>MATS</string>
 			</dict>
 		</array>
-		<key>HaltEnabler</key>
-		<true/>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -150,8 +80,6 @@
 			<dict>
 				<key>APLF</key>
 				<false/>
-				<key>APSN</key>
-				<false/>
 				<key>CStates</key>
 				<false/>
 				<key>PStates</key>
@@ -159,28 +87,30 @@
 				<key>PluginType</key>
 				<true/>
 			</dict>
+			<key>PluginType</key>
+			<string>1</string>
 		</dict>
 	</dict>
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 darkwake=0</string>
+		<string>agdpmod=pikera</string>
 		<key>Debug</key>
 		<false/>
-		<key>DefaultLoader</key>
-		<string>boot.efi</string>
 		<key>DefaultVolume</key>
-		<string>LastBootedVolume</string>
+		<string>MacOS</string>
 		<key>Legacy</key>
 		<string>PBR</string>
+		<key>NeverHibernate</key>
+		<true/>
 		<key>NoEarlyProgress</key>
 		<true/>
 		<key>Secure</key>
 		<false/>
 		<key>Timeout</key>
-		<integer>2</integer>
+		<integer>5</integer>
 		<key>XMPDetection</key>
-		<string>Yes</string>
+		<false/>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -192,29 +122,28 @@
 		<key>Audio</key>
 		<dict>
 			<key>Inject</key>
-			<integer>7</integer>
-			<key>ResetHDA</key>
-			<true/>
+			<integer>1</integer>
 		</dict>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
-			<true/>
+			<false/>
 			<key>FixOwnership</key>
-			<true/>
-			<key>HighCurrent</key>
 			<false/>
 			<key>Inject</key>
-			<true/>
+			<false/>
 		</dict>
-		<key>UseIntelHDMI</key>
-		<false/>
 	</dict>
+	<key>DisableDrivers</key>
+	<array>
+		<string>Nothing</string>
+	</array>
 	<key>GUI</key>
 	<dict>
 		<key>Hide</key>
 		<array>
-			<string>\EFI\BOOT\BOOTX64.EFI</string>
+			<string>recovery</string>
+			<string>preboot</string>
 		</array>
 		<key>Language</key>
 		<string>zh_CN:0</string>
@@ -233,16 +162,25 @@
 		<dict>
 			<key>Entries</key>
 			<true/>
+			<key>Legacy</key>
+			<false/>
+			<key>Linux</key>
+			<false/>
 			<key>Tool</key>
 			<true/>
 		</dict>
 		<key>ScreenResolution</key>
-		<string>1920x1080</string>
+		<string>3840x2160</string>
 		<key>Theme</key>
-		<string>clover-minimal</string>
+		<string>gitTheme</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
+		<key>EDID</key>
+		<dict>
+			<key>Inject</key>
+			<false/>
+		</dict>
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>
@@ -254,15 +192,17 @@
 		</dict>
 		<key>NvidiaSingle</key>
 		<false/>
-		<key>ig-platform-id</key>
-		<string>0x59120000</string>
+		<key>PatchVBios</key>
+		<false/>
+		<key>RadeonDeInit</key>
+		<false/>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
 		<key>AppleIntelCPUPM</key>
-		<false/>
-		<key>AppleRTC</key>
 		<true/>
+		<key>AppleRTC</key>
+		<false/>
 		<key>Debug</key>
 		<false/>
 		<key>DellSMBIOSPatch</key>
@@ -272,108 +212,38 @@
 		<key>KernelLapic</key>
 		<false/>
 		<key>KernelPm</key>
-		<true/>
+		<false/>
 		<key>KernelXCPM</key>
 		<false/>
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>External Drives as Internal to fix Orange Icons</string>
+				<string>USB port limit patch #1 10.15.x modify by DalianSky(credit ydeng)</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				RXh0ZXJuYWw=
-				</data>
+				<data>g/sPDw==</data>
 				<key>InfoPlistPatch</key>
 				<false/>
 				<key>Name</key>
-				<string>AppleAHCIPort</string>
+				<string>com.apple.iokit.IOUSBHostFamily</string>
 				<key>Replace</key>
-				<data>
-				SW50ZXJuYWw=
-				</data>
+				<data>g/s/Dw==</data>
 			</dict>
 			<dict>
 				<key>Comment</key>
-				<string>change 15 port limit to 24</string>
+				<string>USB Port limit patch #2 10.15.x modify by DalianSky</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Find</key>
-				<data>
-				g32MEA==
-				</data>
+				<data>g/kPDw==</data>
 				<key>InfoPlistPatch</key>
 				<false/>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
-				<key>Name</key>
-				<string>AppleUSBXHCIPCI</string>
-				<key>Replace</key>
-				<data>
-				g32MGw==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>USB 10.13.4+ by PMHeart</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				g32UDw+DlwQAAA==
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
 				<key>Name</key>
 				<string>com.apple.driver.usb.AppleUSBXHCI</string>
 				<key>Replace</key>
-				<data>
-				g32UD5CQkJCQkA==
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>disable port limit in XHCI kext (credit DalianSky,Ricky)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				g/sPD4OPBAAA
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.14.1,10.14.2</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g/sPkJCQkJCQ
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>disable port limit in XHCI kext (credit PMHeart)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				g/sPD4MDBQAA
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.14.0</string>
-				<key>Name</key>
-				<string>com.apple.driver.usb.AppleUSBXHCI</string>
-				<key>Replace</key>
-				<data>
-				g/sPkJCQkJCQ
-				</data>
+				<data>g/k/Dw==</data>
 			</dict>
 		</array>
 	</dict>
@@ -383,23 +253,21 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
-		<key>ROM</key>
-		<string>UseMacAddr0</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>02/08/2018</string>
+		<string>12/18/2019</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>IM183.88Z.0157.B00.1802080917</string>
+		<string>IM191.88Z.F000.B00.1912181732</string>
 		<key>Board-ID</key>
-		<string>Mac-BE088AF8C5EB4FA2</string>
+		<string>Mac-AA95B1DDAB278B95</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02702902OPFF4MAD</string>
+		<string>C02050200QXLNV9A8</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -410,12 +278,14 @@
 		<string>Apple Inc.</string>
 		<key>ChassisType</key>
 		<string>0x09</string>
+		<key>EfiVersion</key>
+		<string>1037.80.34.0.0</string>
 		<key>Family</key>
 		<string>iMac</string>
 		<key>FirmwareFeatures</key>
-		<string>0xFC0FE137</string>
+		<string>0xFD8FF576</string>
 		<key>FirmwareFeaturesMask</key>
-		<string>0xFF1FFF3F</string>
+		<string>0xFFDFFF7F</string>
 		<key>LocationInChassis</key>
 		<string>Part Component</string>
 		<key>Manufacturer</key>
@@ -424,21 +294,54 @@
 		<dict>
 			<key>Channels</key>
 			<integer>2</integer>
+			<key>Modules</key>
+			<array>
+				<dict>
+					<key>Frequency</key>
+					<integer>3600</integer>
+					<key>Part</key>
+					<string>G Skill SniperX F4-3600C19-8GSXWB</string>
+					<key>Serial</key>
+					<string>56fqrew65da</string>
+					<key>Size</key>
+					<integer>8192</integer>
+					<key>Slot</key>
+					<integer>1</integer>
+					<key>Type</key>
+					<string>DDR4</string>
+					<key>Vendor</key>
+					<string>G.Skill International Enterprise</string>
+				</dict>
+				<dict>
+					<key>Frequency</key>
+					<integer>3600</integer>
+					<key>Part</key>
+					<string>G Skill SniperX F4-3600C19-8GSXWB</string>
+					<key>Serial</key>
+					<string>5d4fqwf6588</string>
+					<key>Size</key>
+					<integer>8192</integer>
+					<key>Slot</key>
+					<integer>3</integer>
+					<key>Type</key>
+					<string>DDR4</string>
+					<key>Vendor</key>
+					<string>G.Skill International Enterprise</string>
+				</dict>
+			</array>
 			<key>SlotCount</key>
 			<integer>4</integer>
 		</dict>
 		<key>Mobile</key>
 		<false/>
 		<key>PlatformFeature</key>
-		<string>0x00</string>
+		<string>0x22</string>
 		<key>ProductName</key>
-		<string>iMac18,3</string>
+		<string>iMac19,1</string>
 		<key>SerialNumber</key>
-		<string>C02T34UFJ1GJ</string>
+		<string>C02DT0H6JV3Q</string>
 		<key>SmUUID</key>
-		<string>5A6C5B07-A06F-4D91-9095-A4267823DBB8</string>
-		<key>Trust</key>
-		<true/>
+		<string>80F21BB9-0ECF-4CC4-9D43-CA55AD496B0D</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
@@ -447,6 +350,8 @@
 		<key>InjectKexts</key>
 		<string>Yes</string>
 		<key>InjectSystemID</key>
+		<true/>
+		<key>NoCaches</key>
 		<true/>
 	</dict>
 </dict>
